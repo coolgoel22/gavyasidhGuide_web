@@ -1,0 +1,30 @@
+<div class="banner">
+  <img src="./assets/images/botanical-icon.png" alt="Homeopathy Image" class="icon_homo"/>
+  <div class="introText">
+    <div>- Medicines prescribed by qualified Doctors.</div>
+    <div>- Applicable only for Gau Chikitsa.</div>
+  </div>
+</div>
+<div class="gau">
+  <ul>
+    <li class="gau_disease " 
+      *ngFor="let disease of diseaseList | orderBy: 'name'">
+      <div class="gau_disease_label innerBox" 
+        (click)="disease.showDetails = !disease.showDetails;">
+        <span>{{disease.name}}</span> <i class="fa fa-plus addIcon" *ngIf="disease.showDetails && isGauChikitsak" (click)="addMedicine($event, disease)"></i> <i class="sortIcon fa" [ngClass]="{'fa-chevron-up':disease.showDetails, 'fa-chevron-down':!disease.showDetails}"></i>
+      </div>
+      <ul class="gau_disease_med" *ngIf="disease.showDetails">
+        <li class="gau_disease_med_row" *ngFor= "let med of disease.med | orderBy: 'medName'"> 
+          
+          <div><b class="gau_disease_med_name">{{med.medName}}</b></div>
+          <!-- <span class="gau_disease_prescBy">Prescribed By: {{med.prescribedBy}}</span> -->
+          <div>{{med.desc}}</div>
+        </li>
+      </ul>
+    </li>
+  </ul>
+
+  <div class="noRecords innerBox" *ngIf="diseaseList && diseaseList.length == 0">
+      <b class="largerFont">No Medicine found at this time. Please try again later.</b>
+  </div>
+</div>

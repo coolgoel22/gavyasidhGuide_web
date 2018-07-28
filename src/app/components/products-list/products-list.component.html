@@ -1,0 +1,80 @@
+<div class="pos_rel">
+    <button class="products_add btn btn_green" (click)="addProduct()"
+        *ngIf="isMyProducts"><i class="fa" [ngClass]="{'fa-plus': !showForm, 'fa-minus': showForm}"></i> </button>
+    <app-addProducts *ngIf="showForm" [isUpdate]="isUpdate" [item]="product" [products]="products"
+            (onUpdateItem)="onUpdateItem($event)"
+            (productAdded)="onProductAdd($event)"></app-addProducts>
+
+    <h3 class="pageTitle" *ngIf="isMyProducts">Your Listed Products</h3>
+    <h3 class="pageTitle" *ngIf="!isMyProducts">Listed Products</h3>
+    <div class="actionBar">
+        <span class="actionBar_spacer"></span>
+        <div class="selectBox_cont">
+            <div class="selectBox">
+              <select name="category" [(ngModel)]="reqCat" (change)="onCatChange(reqCat)">
+                <option value="">All Categories</option>
+                <option *ngFor="let cat of filter.categoriesObj" value="{{cat.key}}">{{cat.name}}</option>
+              </select>
+            </div>
+            <div class="selectBox">
+                <select name="product" [(ngModel)]="reqProd">
+                  <option value="">All Products</option>
+                  <option *ngFor="let prod of filter.products" value="{{prod.key}}">{{prod.name}}</option>
+                </select>
+            </div>
+        </div>
+    </div>  
+</div>
+<div class="products">
+    <div *ngFor="let item of allItems | filter:'category': reqCat | filter: 'name': reqProd | orderBy: key" class="products_item innerBox">
+        <div class="products_item_name">
+            <!-- <b>{{item.name}}</b> -  -->
+            <b>{{productName[item.name]}}</b> - 
+            <small class="col">{{categories[item.category]}}</small>
+            <!-- <small class="col">{{item.category}}</small> -->
+        </div>
+        <div class="products_item_disc" *ngIf="item.discount">
+            <span class="products_item_disc_text"><b>Off - {{item.discount}}% </b><div *ngIf="item.discountFor === '1'">For gavyasidh's only</div></span>
+        </div>
+        <b class="products_item_unit innerBox">{{item.unit}}</b>
+        <div class="products_item_priceBox">
+            <span class="products_item_netPrice" *ngIf="item.discount">
+                    {{item.amount - (item.amount)*(item.discount)/100 | currency: 'INR' : 'symbol': '1.1-2'}}
+            </span>
+            <span [ngClass]="{'products_item_price':!item.discount,'products_item_discountedPrice':item.discount}">
+                    {{item.amount | currency: 'INR' : 'symbol': '1.1-2'}}
+            </span>
+        </div>
+        <div *ngIf="!isMyProducts" class="seller">
+            <div *ngIf="item.seller">
+                <div class="seller_address">
+                    <b class="seller_name">{{item.seller.name}}</b> from <b class="seller_location">{{item.seller.address.locality}} {{item.seller.address.city}}, {{item.seller.address.state}}</b>
+                </div>
+                <div  class="seller_mobile">
+                    <b>{{item.seller.mobileNo}}</b>
+                </div>
+            </div>
+            <button *ngIf="!item.seller" class="btn btn_green seller_contact" (click)="contactSeller(item.email, item)">Get Contact Details</button>
+        </div>
+        <div class="products_contact" *ngIf="isMyProducts">
+            <button class="btn btn_black btn_small" (click)="edit(item)"><i class="fa fa-edit"> </i> Edit</button>
+            <button class="btn btn_red btn_small" (click)="delete(item)"><i class="fa fa-close"> </i> Delete</button>
+        </div>
+    </div>
+</div>
+
+<div class="noRecords innerBox" *ngIf="allItems && allItems.length == 0">
+    <b class="largerFont">No Product found.</b>
+</div>
+
+<div *ngIf="askConfirmation">
+    <div class="alert_overlay"></div>
+    <div class="alert">
+        <div class="alert_head">Please confirm</div>
+        <div class="alert_text">Are you sure? You want to delete this item.</div>
+        <div class="alert_actions">
+            <button class="alert_ok alert_btn" (click)="onConfirmation(true)">Yes</button>
+            <button class="alert_no alert_btn" (click)="onConfirmation(false)">No</button>
+        </div>
+    </div>
+</div>

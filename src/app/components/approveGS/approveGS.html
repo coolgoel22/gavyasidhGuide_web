@@ -1,0 +1,35 @@
+<div class="container">
+    <h3 class="pageTitle">List of new registered users</h3>
+</div>
+<ul class="table">
+    <li *ngFor="let record of allRecords; let i = index;" class="row">
+        <div class="item" (click)="record.showDetails = !record.showDetails">
+            <h3 class="name">{{record.name}}</h3> 
+            <span [ngClass]="{'fa-chevron-up':record.showDetails, 'fa-chevron-down':!record.showDetails}" class="fa showDetails"></span>
+            <a class="mobile" *ngIf="record.mobileNo" href="tel:{{record.mobileNo}}"><i class="fa fa-phone"></i>  {{record.mobileNo}}</a>
+            <a href="mailto:{{record.email}}" *ngIf="record.email" class="email"><i class="fa fa-envelope"></i> {{record.email}}</a>
+        </div>
+        <div class="details" *ngIf="record.showDetails">
+            <div *ngIf="record.gender"><b class="heading">Gender</b>:{{record.gender}}</div>
+            <b class="heading">Address:</b>
+            <div class="address">
+                <div>{{record.address.locality}}</div>
+                <div><b>{{record.address.city}}</b> - {{record.address.pincode}}</div>
+                <div><b>{{record.address.state}}</b></div>
+            </div>
+            <div *ngIf="record.workingArea">
+                <b class="heading">Working Area:</b>
+                <p class="workingArea">{{record.workingArea}}</p>
+            </div>
+
+            <div class="btnBox">
+                <button (click)="approve(i, record, true)" class="btnBox_approve"><i class="fa fa-thumbs-up"></i> Approve</button>
+                <button (click)="approve(i, record, false)" class="btnBox_reject"><i class="fa fa-thumbs-down"></i> Reject</button>
+            </div>
+        </div>
+    </li>
+</ul>
+
+<div class="noRecords innerBox" *ngIf="allRecords && allRecords.length == 0">
+    <b class="largerFont">No action!! New gavyasidhs have not registered.</b>
+</div>

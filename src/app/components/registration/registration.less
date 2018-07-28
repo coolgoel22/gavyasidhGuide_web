@@ -1,0 +1,137 @@
+form{
+    padding: 10px;
+    border: 1px solid #999;
+    border-radius: 8px 8px 0 0;
+    box-shadow: 1px 1px 3px #333;
+    margin: 10px;
+}
+.fieldError{
+    display: none;
+}
+label{
+    font-size: 1em;
+}
+input, textarea, select{
+    font-size: 1em;
+    width: 100%;
+    margin: 4px 0;
+    border-radius: 4px;
+    border-style: groove;
+    padding: 4px 10px;
+    box-sizing: border-box;
+    outline: none;
+    &[type="checkbox"]{
+        width: 20px;
+        height: 20px;
+        margin: 10px 5px 10px 0;;
+    }
+    &.ng-invalid{
+        &.ng-touched{
+            border-color: red;
+            ~  .fieldError{
+                color: red;
+                margin-bottom: 5px;
+                display: inline-block;
+            }
+        }
+    }
+}
+select{
+    &:active{
+        transform: scale(0.98);
+    }
+}
+.emailPassword{
+    margin-top: 10px;
+}
+textarea{
+    resize: none;
+}
+.email-readonly{
+    background-color: #eee;
+    border-color: #eee;
+    color: #666;
+}
+.two{
+    font-size: 0;
+    .selectBox, .fieldGroup{
+        font-size: 15px;
+        width: 49%;
+        display: inline-block;
+        vertical-align: top;
+        &:first-child{
+            margin-right: 2%;
+        }
+        select{
+            width: 100%;
+        }
+    }
+    .radio{
+        margin-top: 7px;
+    }
+}
+.half{
+    width: 49%;
+    margin-right: 2%;
+}
+
+.checkbox{
+    width: 18px;
+    height: 18px;
+    margin-top: 10px;
+    margin-right: 5px;
+    &_label{
+        display: inline-block;
+        vertical-align: top;
+        margin-top: 10px;
+    }
+}
+
+input[type="radio"]{
+    width: 13px;
+    height: 13px;
+    margin-left: 17px;
+}
+.radio{
+    width: 47%;
+    display: inline-block;
+    label{
+        margin-left:5px;
+    }
+}
+
+.address{
+    margin: 15px 0px 10px;
+    padding: 15px 10px 10px;
+    position: relative;
+    &_label{
+        position: absolute;
+        top: -13px;
+        left: 10px;
+        background-color: #fff;
+        padding: 3px;
+    }
+}
+
+.isGavyasidh{
+    margin: 10px 5px 20px;
+    display: inline-block;
+    .rect{
+        display: inline-block;
+        width: 18px;
+        height: 18px;
+        border: 2px solid #555;
+        border-radius: 5px;
+        margin-right: 6px;
+        color: green;
+    }
+}
+
+.skip{
+    margin: 20px;
+    text-align: center;
+    &_link{
+        text-decoration: underline;
+        color: blue;
+    }
+}

@@ -1,0 +1,126 @@
+<div class="container">
+  <h3 class="pageTitle">Enter your details to register yourself</h3>
+</div>
+<form #saveGavySidh="ngForm" (ngSubmit)="onSubmit(saveGavySidh)">
+<div>
+  <input type="text" name="name" placeholder="Enter Name" required
+      #gavySidhName="ngModel" [(ngModel)]="gavySidh.name" 
+      minlength="3" />
+  <div class="fieldError" *ngIf="gavySidhName.errors?.required">
+    This field is mandatory
+  </div>
+  <div class="fieldError" *ngIf="gavySidhName.errors?.minlength">
+    Name should be at least 3 characters long
+  </div>
+</div>
+<div class="two">
+    <div class="fieldGroup">
+      <input type="string" name="mobile" placeholder="Mobile No"
+          [(ngModel)]="gavySidh.mobileNo" #gavySidhMobileNo="ngModel"
+          required pattern="^[0-9]{10}$"/>
+      <div class="fieldError" *ngIf="gavySidhMobileNo.errors?.required">
+        This field is mandaroty
+      </div>
+      <div class="fieldError" *ngIf="gavySidhMobileNo.errors?.pattern">
+        Donot prefix 0 and enter valid mobile no
+      </div>
+    </div>
+    <div class="radio fieldGroup">
+      <input type="radio" id="male" name="gender" value="Male" 
+        [checked]="gavySidh.gender !== 'Female'" 
+        [(ngModel)]="gavySidh.gender"
+        (change)="gavySidh.gender = 'Male'"/><label for="male">Male</label>
+      <input type="radio" id="female" name="gender" value="Female" 
+        [(ngModel)]="gavySidh.gender"
+        [checked]="gavySidh.gender === 'Female'" 
+        (change)="gavySidh.gender = 'Female'"/><label for="female">Female</label>
+    </div>
+</div>
+
+<div class="emailPassword innerBox" *ngIf="isNewReg">
+  <b>Enter your Login credentials</b>
+  <div>
+    <input type="email" name="email" placeholder="Email Id" 
+      [(ngModel)]="gavySidh.email" #gavySidhEmail="ngModel"
+      required pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$"/>
+    <div class="fieldError" *ngIf="gavySidhEmail.errors?.required">
+      This is mandatory field
+    </div>
+    <div class="fieldError" *ngIf="gavySidhEmail.errors?.pattern">
+      Email is invalid
+    </div>
+  </div>
+  <div>
+    <input type="password" name="password" placeholder="Enter Password" required
+      [(ngModel)]="gavySidh.password" 
+      minlength="8"
+      #password="ngModel"/>  
+    <div class="fieldError" *ngIf="password.errors?.required">
+      This field is mandatory
+    </div>
+    <div class="fieldError" *ngIf="password.errors?.minlength">
+      Please enter at least 8 alphabets
+    </div>
+  </div>
+</div>
+<div class="email" *ngIf="!isNewReg">
+  <input type="text" class="disable" [(ngModel)]="email" name="email"/>
+</div>
+<div (click)="iAmAGavyasidh()" class="isGavyasidh" *ngIf="isNewReg">
+  <span class="rect"><i class="fa" [ngClass]="{'fa-check':isGavyasidh}"></i></span>
+  <label class="isGavySidhLabel" for="isGavySidh">I am a Gavyasidh</label>
+</div>
+
+<div *ngIf="isGavyasidh">
+  <div class="address innerBox">
+    <label class="address_label"><b>Address:</b></label>
+    <div class="two">
+      <div class="selectBox">
+        <select name="state" 
+            [(ngModel)]="gavySidh.address.state" 
+            (change)=getCities(gavySidh.address.state)
+            required #gavySidhState="ngModel">
+          <option value="0" disabled selected hidden>Select a State</option>
+          <option *ngFor="let state of states" value="{{state}}">{{state}}</option>
+        </select>
+        <div class="fieldError" *ngIf="gavySidh.address.state == '0'">
+          This field is mandatory
+        </div>
+      </div>
+      <div class="selectBox" >
+        <select [(ngModel)]="gavySidh.address.city" name="city"
+          required #gavySidhCity="ngModel">
+          <option value="0" disabled selected hidden>Select a City</option>
+          <option *ngFor="let city of cities" value="{{city}}">{{city}}</option>
+        </select>
+        <div class="fieldError" *ngIf="gavySidh.address.city == '0'">
+            This field is mandatory
+        </div>
+      </div>
+    </div>
+
+    <input type="text" name="locality" placeholder="Add Locality"
+      [(ngModel)]="gavySidh.address.locality" required id="locality" (focus)="scrollTo('locality')"
+      #gavySidhLocality="ngModel" />
+    <div class="fieldError" *ngIf="gavySidhLocality.errors?.required">
+      This field is mandatory 
+    </div>
+    
+    <div>
+      <input type="pincode" placeholder="Enter Pincode" name="pincode"
+        required [(ngModel)]="gavySidh.address.pincode" id="pincode" (focus)="scrollTo('pincode')"
+        #gavySidhPincode="ngModel" pattern="^[0-9]{6,7}$"/>
+      <div class="fieldError" *ngIf="gavySidhPincode.errors?.required">
+        This field is mandatory
+      </div>
+      <div class="fieldError" *ngIf="gavySidhPincode.errors?.pattern">
+        Please enter valid pincode
+      </div>
+    </div>
+  </div>  
+</div>
+<input type="submit" [disabled]="!saveGavySidh.form.valid" name="submit" value="Register" class="btn btn_green" *ngIf="isNewReg"/>
+<input type="submit" [disabled]="!saveGavySidh.form.valid" name="submit" value="Update" class="btn btn_orange" *ngIf="!isNewReg"/>
+</form>
+
+

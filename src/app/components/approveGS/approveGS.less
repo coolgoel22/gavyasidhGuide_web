@@ -1,0 +1,215 @@
+.table{
+    font-size: 1em;
+    margin: 15px 10px;
+    padding: 0px;
+    .name{
+        margin: 5px 0px 2px;
+    }
+    .mobile{
+        text-decoration: none;
+        color: green;
+        font-weight: bold;
+        margin-right: 10px;
+    }
+    .email{
+        white-space: nowrap;
+        color: darkblue;
+        text-decoration: none;
+    }
+    .address, .workingArea{
+        margin: 5px 0;
+    }
+    .row{
+        list-style: none;
+        margin-bottom: 10px;
+        &:nth-child(2n-1){
+            .item{
+                background-color: #efefef;
+            }
+        }
+        &_checkbox{
+            width: 18px;
+            height: 18px;
+            display: inline-block;
+            border: 1px solid #999;
+            border-radius: 5px;
+            vertical-align: top;
+            margin-top: 20px;
+            color: green;
+            &:active{
+                transform: scale(0.99);
+            }
+        }
+        &.bm_selected{
+            background-color: #ddd !important;
+        }
+        .item{
+            border: 1px solid #ccc;
+            border-radius: 5px 5px 0 0;
+            padding: 10px;
+            position: relative;
+            display: inline-block;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        .showDetails{
+            position: absolute;
+            top: 20px;
+            right: 10px;
+        }
+        .details{
+            background-color: #fff;
+            padding: 5px 10px;
+            border: 1px solid #333;
+            border-radius: 0 0 5px 5px;
+            margin: 0 10px 15px;
+            position: relative;
+            border-top: none;
+            overflow: hidden;
+            .heading{
+                margin-top: 10px;
+                display: inline-block;
+            }
+        }
+
+    }
+    .rowHead span{
+        font-weight: bold;
+        cursor: pointer;
+    }
+    .address, .workingArea{
+        max-width: 200px;
+        white-space: normal;
+    }
+}
+.mobile{
+    a{
+        color: #111;
+        text-decoration: none;
+    }
+}
+.actionBar{
+    background-color: #eee;
+    border: 1px solid #ccc;
+    padding: 2px 10px;
+    display: flex;
+    position: relative;
+    &_spacer{
+        flex: 1 1 auto;
+    }
+    &_sep{
+        border-right: 1px solid #999;
+        
+    }
+    &_btn{
+        border-radius: 3px;
+        font-size: 1em;
+        padding: 2px 10px;
+        background-color: #666;
+        border: 0px;
+        color: #fff;
+        margin-right: 6px;
+
+    }
+    &_primary{
+        background-color: #f7a002;
+    }
+    &_settings{
+        background-image: url(/assets/images/settings.jpg);
+        background-repeat: no-repeat;
+        background-size: 100%;
+    }
+    &_search{
+        border: 1px solid #ccc;
+        display: inline-block;
+        border-radius: 5px;
+        outline: none;
+        padding: 2px 5px;
+        font-size: 1em;
+        margin-left: 6px;
+        width: 110px;
+    }
+    
+}
+
+.arrow{
+    display: inline-block;
+    width: 0px;
+    height: 0px;
+    margin-left: 4px;
+    margin-bottom: 2px;
+    border-right: 5px solid transparent; 
+    border-left: 5px solid transparent; 
+    &Up{
+        border-bottom: 5px solid #000;
+    }
+    &Down{
+        border-top: 5px solid #000;
+    }
+}
+
+.sortItems{
+    position: absolute;
+    background-color: #fff;
+    right: 5px;
+    top: 135px;
+    z-index: 9;
+    ul{
+        padding: 0;
+        margin:0;
+        border: 2px solid #666;
+        overflow: hidden;
+        border-radius: 5px;
+    }
+    li{
+        list-style: none;
+        padding: 7px 20px;
+        cursor: pointer;
+        &:nth-child(2n-1){
+            background-color: #eee;
+        }
+    }
+    &:before{
+        content: "";
+        position: absolute;
+        top: -9px;
+        right: 7px;
+        border-bottom: 10px solid #777;
+        border-right: 10px solid transparent;
+        border-left: 10px solid transparent;
+    }
+    
+}
+
+.whatsAppIcon{
+    display: inline-block;
+    padding: 4px 8px;
+    border: 1px solid #ccc;
+    margin-left: 7px;
+    border-radius: 5px;
+    background-color: #fff;
+    color: green;
+    font-size: 1.5em;
+    &:active{
+        transform: scale(0.98);
+    }
+}
+
+.btnBox{
+    button{
+        width: 47%;
+        padding: 8px 15px;
+        border-radius: 7px;
+        border: 1px solid #333;
+        text-shadow: 1px 1px 3px #999;
+        color: #fff;
+        outline: none;
+    }
+    &_approve{
+        background-color: green;
+        margin-right: 3%;
+    }
+    &_reject{
+        background-color: #666;
+    }
+}

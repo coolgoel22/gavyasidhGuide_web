@@ -1,0 +1,75 @@
+<div class="pos_rel">
+  <h3 class="pageTitle">Login Page</h3>
+  <span (click)="isShowHowToUse = !isShowHowToUse" class="howToUse link">How To Use?</span>
+  <div class="login innerBox">
+    <div class="error" *ngIf="errorMessage">{{errorMessage}}</div>
+    <form #loginForm="ngForm" (ngSubmit)="submit($event, loginForm)">
+      <div class="fieldGroup">
+        <input type="email" name="userName" placeholder="Enter user name" required 
+        pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$"
+        [(ngModel)]="newUser.userName" 
+        #userName="ngModel"/>
+
+        <div class="fieldError" *ngIf="userName.errors?.required">
+          This field is mandatory
+        </div>
+      </div>
+
+      <div class="fieldGroup">
+        <input type="password" name="password" placeholder="Enter Password" required
+        [(ngModel)]="newUser.password" 
+        minlength="8"
+        #password="ngModel"/>  
+        <div class="fieldError" *ngIf="password.errors?.required">
+          This field is mandatory
+        </div>
+        <div class="fieldError" *ngIf="password.errors?.minlength">
+          Please enter at least 8 alphabets
+        </div>
+      </div>
+      <input type="submit" class="btn btn_orange" value="Login" [disabled]="!loginForm.form.valid"/>
+    </form>
+    <div class="guest">
+      <p class="guest_info">Are you a Gavyasidh? Please register with below link.   </p>
+      <span class="guest_link" (click)="register()">Register yourself</span>
+    </div>
+  </div>
+  <!-- <div class="googleSingIn_box">
+    <button class="btn btn_skyBlue btn_full" (click)="signInWithGoogle()"> <i class="fa fa-google-plus icon"></i> SignIn With Google</button>
+  </div>
+
+  <hr class="seprator" /> -->
+
+  <div class="guestLogin">
+    <button class="btn btn_green btn_full" (click)="guestLogin()">Login as a Guest</button>
+  </div>
+  <hr class="seprator" />
+  <div class="tncLink link">
+    <span  (click)="ifShowTnC = !ifShowTnC">Conditions of use</span>
+  </div>
+  <div class="tnc" *ngIf="ifShowTnC">
+    <h3>Conditions of use</h3>
+    <ul>
+      <li>App will manually authenticate the approval of Gavyasidhs but it is recommended to verify the authenticity and qualification of the Gavyasidh doctors on your own. App is not responsible for any discrepancies.</li>
+      <li>App is not responsible for medicines prescribed by any Gavyasidhs even if he/she is listed on the application.</li>
+      <li>The App reserves all rights to remove any user, product or Gavyasidh without any warning, if the listed product(s) or listed Gavyasiddh  violates the terms and conditions.</li>
+      <li>Verified gavyasidhs are wholly responsible for the quality of their products and other services listed in the App.</li>
+      <li>App has no role in deciding the price of any product. Buyer can directly contact seller and negotiate at their own level.</li>
+    </ul>
+    <div>
+      <button type="button" class="btn btn_orange btn_full" (click)="acceptTnC()">I got it, Close</button>
+    </div>
+  </div>
+
+  <div class="tnc" *ngIf="isShowHowToUse">
+    <h3>How To Use</h3>
+    <ul>
+      <li>Registration is required for gavyasidhs only.</li>
+      <li>Until admin will approve you as a gavyasidh, you wouldn't be having rights to upload your products.</li>
+      <li>Contact your Gurukulam Acharya to get approved as a gavyasidh or wait until admin will do the same.</li>
+    </ul>
+    <div>
+      <button type="button" (click)="isShowHowToUse = false" class="btn btn_full btn_skyBlue">CLOSE</button>
+    </div>
+  </div>
+</div>

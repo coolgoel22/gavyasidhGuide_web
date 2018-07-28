@@ -1,0 +1,19 @@
+body{
+    margin: 0;
+    padding: 0;
+}
+.loader{
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background-color: #000;
+    user-select: none;
+    pointer-events: none;
+    opacity: 0.97;
+    background-image: url(/assets/images/loader.gif);
+    background-repeat: no-repeat;
+    background-size: 100px;
+    background-position: center;
+}

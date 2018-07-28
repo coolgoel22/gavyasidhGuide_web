@@ -1,0 +1,70 @@
+<h3 class="pageTitle">Add your products</h3>
+<div class="addProduct innerBox">
+     <form #myProduct="ngForm" (ngSubmit)="onSubmit($event, myProduct)">
+          <div class="fieldGroup">
+               <select name="category" [ngClass]="{'disable': isUpdate}"
+                    required
+                    [(ngModel)]="item.category" (change)="onCatChange(item.category)">
+                    <option disabled="true" value="0">Select product category</option>
+                    <option *ngFor="let cat of categories"
+                         value="{{cat.key}}">{{cat.name}}</option>
+               </select>
+               <div class="fieldError">
+                    This field is mandatory
+               </div>
+          </div>
+          <div class="fieldGroup">
+               <select name="name" required [ngClass]="{'disable': isUpdate}"
+                    [(ngModel)]="item.name">
+                    <option disabled="true" value="0">Select a product</option>
+                    <option *ngFor="let product of products" value="{{product.key}}">{{product.name}}</option>
+               </select>
+               <div class="fieldError">
+                    This field is mandatory
+               </div>
+          </div>
+          <div class="two pair">
+               <div class="fieldGroup">
+                    <label class="fieldLabel">Amount</label>
+                    <input type="number" name="amount"
+                         #amount="ngModel" required
+                         [(ngModel)]="item.amount">
+                         <div class="fieldError" *ngIf="amount.errors?.required">
+                              This field is mandatory
+                         </div>
+               </div>
+               <div class="fieldGroup">
+                    <label class="fieldLabel">Unit</label>
+                    <input type="text" name="unit" [ngClass]="{'disable': isUpdate}"
+                         #unit="ngModel" required
+                         [(ngModel)]="item.unit">
+                         <div class="fieldError" *ngIf="unit.errors?.required">
+                              This field is mandatory
+                         </div>
+               </div>
+          </div>
+          <div class="two">
+            <div class="fieldGroup">
+                <label class="fieldLabel">Discount<span class="small">(Optional, in %)</span></label>
+                <input type="number" name="discount"
+                        #discount="ngModel"
+                        [(ngModel)]="item.discount">
+            </div>
+            <div class="fieldGroup">
+                <label class="fieldLabel">Discount For</label>
+                <select name="discountFor" [(ngModel)]="item.discountFor">
+                    <option value="0" default>Everyone</option>
+                    <option value="1">Gavyasidh Only</option>
+                </select>
+            </div>
+        </div>
+          
+          <div>
+               <input type="submit" class="btn btn_green" *ngIf="!isUpdate"
+                    [disabled]="!myProduct.form.valid" name="submit" value="Add Product"/>
+
+               <input type="submit" class="btn btn_orange" *ngIf="isUpdate"
+                    [disabled]="!myProduct.form.valid" name="submit" value="Update Product"/>
+          </div>
+     </form> 
+</div>

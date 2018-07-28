@@ -1,0 +1,56 @@
+<div class="container">
+    <h3 class="pageTitle">List of Gavyasidhs</h3>
+    <div class="actionBar">
+        <span class="actionBar_spacer"></span>
+        <div class="selectBox_cont">
+            <div class="selectBox">
+              <select name="state" [(ngModel)]="reqState" 
+                  (change)=getCities(reqState)>
+                <option value="">States</option>
+                <option *ngFor="let state of states" value="{{state}}">{{state}}</option>
+              </select>
+            </div>
+            <div class="selectBox" >
+              <select [(ngModel)]="reqCity" name="city">
+                <option value="">Cities</option>
+                <option *ngFor="let city of cities" value="{{city}}">{{city}}</option>
+              </select>
+            </div>
+        </div>
+        <input type="text" placeholder="Name, Mobile..." class="actionBar_search" name="search" [(ngModel)]="searchText" />
+        <span (click)="whatsAppRecords()" class="whatsAppIcon"><i class="fa fa-whatsapp" aria-hidden="true"></i></span>
+    </div> 
+</div>
+
+<ul class="table">
+    <li *ngFor="let record of allRecords | filter:'address.city':reqCity | filter: 'address.state': reqState | filter: searchText | orderBy: key"  class="row" [ngClass]="{'bm_selected':record.isChecked}">
+        <div>
+            <span class="row_checkbox" (click)="checkboxClicked(record)">
+                <i *ngIf="record.isChecked" class="fa fa-check" aria-hidden="true"></i>
+            </span>
+            <div class="item innerBox" (click)="record.showDetails = !record.showDetails">
+                <h3 class="name">{{record.name}}</h3> 
+                <span [ngClass]="{'fa-chevron-up':record.showDetails, 'fa-chevron-down':!record.showDetails}" class="fa showDetails"></span>
+                <a class="mobile" [href]="'tel:'+record.mobileNo" *ngIf="record.mobileNo"><i class="fa fa-phone"></i>  {{record.mobileNo}}</a>
+                <span class="email" *ngIf="record.email"><i class="fa fa-envelope"></i> {{record.email}}</span>
+            </div>
+            <div class="details" *ngIf="record.showDetails">
+                <div *ngIf="record.gender"><b class="heading">Gender</b>:{{record.gender}}</div>
+                <b class="heading">Address:</b>
+                <div class="address">
+                    <div>{{record.address.locality}}, <b>{{record.address.city}}</b></div>
+                    <div><b>{{record.address.state}}</b> - {{record.address.pincode}}</div>
+                </div>
+                <div *ngIf="record.workingArea">
+                    <b class="heading">Working Area:</b>
+                    <p class="workingArea">{{record.workingArea}}</p>
+                </div>
+            </div>
+        </div>
+    </li>
+</ul>
+
+<div class="noRecords innerBox" *ngIf="allRecords && allRecords.length == 0">
+    <b class="largerFont">No Gavysidh found for your searched text.</b>
+</div>
+

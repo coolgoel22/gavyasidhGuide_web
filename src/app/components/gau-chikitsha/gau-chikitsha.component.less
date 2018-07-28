@@ -1,0 +1,83 @@
+.gau{
+    margin: 15px 10px;
+    ul{
+        padding: 0;
+        li{
+            list-style: none;
+        }
+    }
+    &_disease{
+        margin-bottom: 15px;
+        &:nth-child(2n){
+            .gau_disease_label{
+                background-color: #efefef;
+            }
+        }
+        & .addIcon{
+            color: blue;
+            margin-left: 20px;
+            border: 1px solid blue;
+            padding: 4px 7px;
+            border-radius: 5px;
+            background-color: #fff;
+        }
+        &_prescBy{
+            float: right;
+            font-size: 0.8em;
+            color: #aaa;
+            white-space: nowrap;
+        }
+        &_label{
+            position: relative;
+            padding: 10px 20px;
+            font-weight: bold;
+            font-size: 1.2em;
+            &:active{
+                transform: scale(0.99);
+            }
+            .sortIcon{
+                position: absolute;
+                right: 15px;
+            }
+        }
+        &_med{
+            border: 1px solid #999;
+            border-top: none;
+            border-radius: 0 0 8px 8px;
+            margin: 0px 5px;
+            background-color: #fff;
+            overflow: hidden;
+            box-shadow: 0px 1px 3px #333;
+            &_row{
+                padding: 10px 10px 10px 15px;
+                border-bottom: 1px solid #999;
+                box-shadow: 0px 1px 3px darkgray;
+                &:last-child{
+                    border-bottom: none;
+                }
+            }
+            &_name{
+                font-size: 1.1em;
+                color: darkblue;
+            }
+        }
+    }
+}
+.banner{
+    height: 100px;
+    background-color: green;
+    box-shadow: 0px 1px 6px #333;
+    .introText{
+        vertical-align: top;
+        display: inline-block;
+        padding: 10px;
+        color: #fff;
+        margin-left: 100px;
+    }
+    .icon{
+        &_homo{
+            height: 100px;
+            position: absolute;
+        }
+    }
+}

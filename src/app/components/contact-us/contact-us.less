@@ -1,0 +1,87 @@
+.contact{
+    padding: 10px;
+}
+.queryCont{
+    border-top: 2px dotted #ccc;
+    margin-top: 20px;
+    .reply{
+        margin-left: 20px;
+        color: #666;
+        &_edit{
+            text-decoration: underline;
+            color: blue;
+        }
+    }
+}
+.table{
+     font-size: 1em;
+     margin-top: 25px;
+     padding: 0px;
+     .name{
+        margin: 5px 15px 5px 0;
+        display: inline-block;
+     }
+     .shortQuery{
+        margin: 5px 30px 0 0;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+     }
+     .mobile{
+         text-decoration: none;
+         color: green;
+         font-weight: bold;
+         margin-right: 10px;
+     }
+     .email{
+         white-space: nowrap;
+         color: #222;;
+         text-decoration: none;
+     }
+     .address{
+         margin: 5px 0;
+     }
+     .row{
+         list-style: none;
+         margin-bottom: 10px;
+         &:nth-child(2n-1){
+             .item{
+                 background-color: #efefef;
+             }
+         }
+         
+         .item{
+             position: relative;
+             display: inline-block;
+             width: 100%;
+             box-sizing: border-box
+         }
+         .showDetails{
+             position: absolute;
+             top: 20px;
+             right: 10px;
+         }
+         .details{
+             background-color: #fff;
+             padding: 5px 10px;
+             border: 1px solid #333;
+             border-radius: 0 0 5px 5px;
+             margin: 0 5px 10px;
+             position: relative;
+             border-top: none;
+             overflow: hidden;
+             .heading{
+                 margin-top: 10px;
+                 display: inline-block;
+             }
+         }
+ 
+     }
+     .rowHead span{
+         font-weight: bold;
+         cursor: pointer;
+     }
+ }
+ 
+ 
+ 

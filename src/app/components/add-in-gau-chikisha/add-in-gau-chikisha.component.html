@@ -1,0 +1,46 @@
+<div class="banner">
+    <img src="./assets/images/images.png" alt="Homeopathy Image" class="icon_homo"/>
+    <span class="introText">Write detailed description of medcines, This will help gopalak to choose correct medicine.</span>
+  </div>
+<div class="homeopathy">
+  
+  <form class="form" #addInGauChikitsha="ngForm" (ngSubmit)="onSubmit(addInGauChikitsha)">
+    <div class="fieldGroup">
+      <label class="fieldGroup_label">Disease Name</label>
+      <input type="text" name="disease" [(ngModel)]="homeopathy.disease"
+          required #disease="ngModel" />
+      <div class="fieldError">This field is mandatory</div>
+    </div>
+    <div class="medicineBox">
+      <label class="medicineBox_label">Medicines</label>
+      <b>Enter medicine name and its detailed description. </b>
+      <br/>
+      <br/>
+      If you want to list more than one medicine, than click <b>"Add Another Row"</b> button.
+      <div class="medicineRowCont" *ngFor="let medicine of medicineBoxArray; let i = index;">
+        <label class="medicineBox_label">{{i+1}}</label>
+        <span class="medicineRow_closeBtn" *ngIf="i" (click)="removeMedicineRow(i)"><i class="fa fa-close"></i></span>
+        <div class="medicineRow">
+          <div class="fieldGroup">
+            <label class="fieldGroup_label small">Medicine Name</label>
+            <input type="text" name="name_{{i+1}}" [(ngModel)]="medicine.name"
+            required #medicineName="ngModel" />
+            <div class="fieldError">This field is mandatory</div>
+          </div>
+          <div class="fieldGroup">
+            <label class="fieldGroup_label small">Description</label>
+            <textarea name="description_{{i+1}}" [(ngModel)]="medicine.description"
+            required #description="ngModel" class="textarea"></textarea>
+            <div class="fieldError">This field is mandatory</div>
+          </div>
+        </div>
+      </div>
+      <a class="addMedicineBox" (click)="addMedicineBox(addInGauChikitsha)">Add Another Row</a>
+    </div>
+
+    <div class="btnCont">
+      <input type="submit" value="Save" [disabled]="!addInGauChikitsha.form.valid">
+      <input type="button" class="cancel" value="Home" (click)="onCancel()"/>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,86 @@
+.table{
+    font-size: 1em;
+    margin: 15px 10px;
+    padding: 0px;
+    .name{
+        margin: 5px 0px;
+    }
+    .mobile{
+        text-decoration: none;
+        color: green;
+        font-weight: bold;
+        margin-right: 10px;
+    }
+    .email{
+        white-space: nowrap;
+        color: #222;;
+        text-decoration: none;
+    }
+    .address, .workingArea{
+        margin: 5px 0;
+    }
+    .row{
+        list-style: none;
+        margin-bottom: 10px;
+        &:nth-child(2n-1){
+            .item{
+                background-color: #efefef;
+            }
+        }
+        &_checkbox{
+            width: 18px;
+            height: 18px;
+            display: inline-block;
+            border: 1px solid #999;
+            border-radius: 5px;
+            vertical-align: top;
+            margin-top: 20px;
+            color: green;
+            &:active{
+                transform: scale(0.99);
+            }
+        }
+        &.bm_selected{
+            background-color: #ddd !important;
+            .item{
+                background-color: #ddd !important;
+            }
+        }
+        .item{
+            position: relative;
+            display: inline-block;
+            width: ~"calc(100% - 47px)";
+        }
+        .showDetails{
+            position: absolute;
+            top: 20px;
+            right: 10px;
+        }
+        .details{
+            background-color: #fff;
+            padding: 5px 10px;
+            border: 1px solid #333;
+            border-radius: 0 0 5px 5px;
+            margin: 0 10px 15px 31px;
+            position: relative;
+            border-top: none;
+            overflow: hidden;
+            .heading{
+                margin-top: 10px;
+                display: inline-block;
+            }
+        }
+
+    }
+    .rowHead span{
+        font-weight: bold;
+        cursor: pointer;
+    }
+}
+.mobile{
+    a{
+        color: #111;
+        text-decoration: none;
+    }
+}
+

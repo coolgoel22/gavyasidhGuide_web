@@ -1,0 +1,64 @@
+.home{
+     padding: 15px;
+     font-size: 0px;
+     &_box{
+          &:active{
+               transform: scale(0.99);
+          }
+          font-size: 14px;
+          padding: 12px 15px;
+          height: 110px;
+          width: 48%;
+          border: 1px solid #999;
+          display: inline-block;
+          box-sizing: border-box;
+          vertical-align: top;
+          text-align: center;
+          cursor: pointer;
+          border-radius: 8px 8px 0 0;
+          margin-bottom: 12px;
+          box-shadow: 0px 2px 3px 1px #333; 
+          &:nth-child(2n-1){
+               margin-right: 4%;
+          }
+          &:nth-child(3n-2){
+               background-color: #dfdfdf;
+          }
+          &:nth-child(3n-1){
+               background-color: #eee;
+          }
+          &:nth-child(3n){
+               background-color: #efefef;
+          }
+          &_icon{
+               font-size: 1.5em;
+               display: inline-block;
+               padding: 10px;
+               border: 1px solid #bbb;
+               border-radius: 35px;
+               background-color: #fff;
+               color: #f27a09;
+               margin-bottom: 3px;
+               min-width: 25px;
+               &.bm-color{
+                    &_blue{
+                         color: #232790;
+                    }
+                    &_black{
+                         color: #333;
+                    }
+               }
+          }
+          &_label{
+               display: block;
+          } 
+     }
+}
+.icon_homeo{
+    padding: 8px 10px;
+    border: 1px solid #ccc;
+    border-radius: 35px;
+    display: inline-block;
+    background-color: #fff;
+}
+

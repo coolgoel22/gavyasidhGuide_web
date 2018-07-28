@@ -1,0 +1,54 @@
+<div class="contact">
+  <h3 class="pageTitle">Contact Us</h3>
+  <div class="innerBox">
+    <p>Please share your concerns, queries or feedback here. We will get back to you as earliest possible.</p>
+    <form #contactForm="ngForm" (ngSubmit)="onSubmit($event, contactForm)">
+      <div class="fieldGroup">
+        <input type="text" name="name" required [(ngModel)]="contact.name" placeholder="Enter Name" />
+      </div>
+      <div class="fieldGroup">
+        <input type="text" name="mobileNo" required [(ngModel)]="contact.mobileNo" placeholder="Enter Mobile no" pattern="^[0-9]{10}$"/>
+      </div>
+      <div class="fieldGroup">
+        <input type="email" name="email" required [(ngModel)]="contact.email" 
+          placeholder="Enter email id" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"/>
+      </div>
+      <div class="fieldGroup">
+        <textarea name="query" required [(ngModel)]="contact.query" placeholder="Enter you query"></textarea>
+      </div>
+      <input type="submit" class="btn btn_orange" value="Submit" [disabled]="!contactForm.form.valid"/>
+    </form>
+  </div>
+
+  <div class="queryCont">
+    <h3 class="pageTitl">Previous queries</h3>
+    <ul class="table">
+      <li *ngFor="let record of allQueries | orderBy: 'date' : true"  class="row">
+          <div>
+              <div class="item innerBox" (click)="record.showDetails = !record.showDetails">
+                  <h3 class="name">{{record.name}}</h3><span>{{record.date | date: 'short'}}</span>
+                  <span [ngClass]="{'fa-chevron-up':record.showDetails, 'fa-chevron-down':!record.showDetails}" class="fa showDetails"></span>
+                  <div *ngIf="isAdmin == 'true'">
+                    <a class="mobile" [href]="'tel:'+record.mobileNo" *ngIf="record.mobileNo"><i class="fa fa-phone"></i>  {{record.mobileNo}}</a>
+                    <span class="email" *ngIf="record.email"><i class="fa fa-envelope"></i> {{record.email}}</span>
+                </div>
+                  <div class="shortQuery" *ngIf="!record.showDetails"><b>Query:</b> {{record.query}}</div>
+              </div>
+              <div class="details" *ngIf="record.showDetails">
+                  <b class="heading">Query:</b>
+                  <div class="query">
+                    <div>{{record.query}}</div>
+                  </div>
+                  <div *ngIf="record.reply" class="reply"><div><b>Response</b></div>{{record.reply}}</div>
+                  <div *ngIf="isAdmin == 'true' && !record.reply">
+                    <form #queryRes="ngForm" (ngSubmit)="onReply($event, record, queryRes)">
+                      <textarea name="response" [(ngModel)]="record.res"></textarea>
+                      <input type="submit" value="Reply" class="btn btn_orange" [disabled]="!queryRes.form.valid"/>
+                    </form>
+                  </div>
+              </div>
+          </div>
+      </li>
+  </ul>
+  </div>
+</div>

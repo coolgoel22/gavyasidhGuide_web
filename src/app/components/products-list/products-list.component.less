@@ -1,0 +1,74 @@
+.products{
+     font-size: 1em;
+     margin: 20px 10px;
+     padding: 0px;
+    &_add{
+            position: absolute;
+            top: 0;
+            right: 10px;
+    }
+    &_contact{
+        margin: 10px auto;
+    }
+    &_item{
+        box-sizing: border-box;
+        margin-bottom: 10px;
+        overflow: auto;
+        &_disc{
+            &_text{
+                border: 1px solid green;
+                color: green;
+                padding: 1px 8px;
+                border-radius: 5px;
+                font-size: 0.9em;
+                box-shadow: 1px 1px 2px #333;
+                float: right;
+                text-align: center;
+            }
+        }
+        &_name{
+            margin: 5px 0 10px;
+        }
+        &_netPrice{
+            margin-left: 10px;
+        }
+        &_price{
+            margin-left: 10px;
+        }
+        &_unit{
+            display: inline-block;
+            color: #ff9999;
+            padding: 2px 10px;
+            margin: 0px 10px 10px;
+        }
+        &_discountedPrice{
+            color: #aaa;
+            font-size: 0.9em;
+            text-decoration: line-through;
+            margin-left: 10px;
+        }
+    }
+    .rowHead span{
+        font-weight: bold;
+        cursor: pointer;
+    }
+ }
+ .selectBox{
+     width: 120px;
+ }
+.seller{
+    margin: 10px 0;
+    &_contact{
+        margin: 10px auto;
+    }
+    &_address{
+        font-size: 0.9em;
+    }
+    &_name, &_mobile{
+        color: darkblue;
+    }
+    &_location{
+        font-size: 0.9em;
+    }
+    
+}

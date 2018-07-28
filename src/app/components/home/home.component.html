@@ -1,0 +1,54 @@
+<div class="home">
+    <div class="home_box home_gavyaSidh" (click)="redirectTo('gavyaSidhList')">
+        <span class="home_box_icon"><i class="fa fa-users"></i></span>
+        <span class="home_box_label">Gavyasidh Near You</span>
+    </div>
+    <div class="home_box home_productsList" (click)="redirectTo('productList')">
+        <span class="home_box_icon bm-color_blue"><i class="fa fa-product-hunt"></i></span>
+        <span class="home_box_label">Buy Panchgavya Products</span> 
+    </div>
+    <div class="home_box home_products" (click)="showMyProducts('productList')" *ngIf="isGavyasidh">
+        <span class="home_box_icon bm-color_blue"><i class="fa fa-connectdevelop"></i></span>
+        <span class="home_box_label">Manage Product Inventory</span>
+    </div>
+    <div class="home_box home_udpateProfile" (click)="showRegistration('/registration')" *ngIf="isGavyasidh">
+        <span class="home_box_icon bm-color_black"><i class="fa fa-user"></i></span>
+        <span class="home_box_label">Update Profile</span>
+    </div>
+    <div class="home_box home_gauchikitsha" (click)="redirectTo('/gauChikitsha')">
+        <span class="icon_homeo">
+            <img src="./assets/images/images.png" width="25px" height="25px" alt="Homeopathy Image" />
+        </span>
+        <span class="home_box_label">Chikitsa of Gau Mata</span>
+    </div>
+    <div class="home_box home_gauchikitsha" (click)="contactUs('/contactUs')">
+        <span class="home_box_icon bm-color_blue"><i class="fa fa-question"></i></span>
+        <span class="home_box_label">Queries / Feedback</span>
+    </div>
+    <div class="home_box home_gavyaSidh" (click)="redirectTo('/approveGS')" *ngIf="isAdmin">
+        <span class="home_box_icon bm-color_black"><i class="fa fa-thumbs-up"></i></span>
+        <span class="home_box_label">Approve Gavyasidh</span>
+    </div>
+    <div class="home_box home_addGauChikitsha" (click)="redirectTo('/addInGauChikitsha')" *ngIf="isGauChikitshak">
+        <span class="icon_homeo">
+            <img src="./assets/images/botanical-icon.png" alt="natural Image"  width="25px" height="25px"  />
+        </span>
+        <span class="home_box_label">Add Medicines for Gau Mata</span>
+    </div>
+    <div class="home_box home_udpateProfile" (click)="signOut()">
+        <span class="home_box_icon"><i class="fa fa-sign-out"></i></span>
+        <span class="home_box_label">Sign-out</span>
+    </div>
+</div>
+
+<div *ngIf="askConfirmation">
+    <div class="alert_overlay"></div>
+    <div class="alert">
+        <div class="alert_head">Please confirm</div>
+        <div class="alert_text">Do you really want to signout ?</div>
+        <div class="alert_actions">
+            <button class="alert_ok alert_btn" (click)="onConfirmation(true)">Yes</button>
+            <button class="alert_no alert_btn" (click)="onConfirmation(false)">No</button>
+        </div>
+    </div>
+</div>

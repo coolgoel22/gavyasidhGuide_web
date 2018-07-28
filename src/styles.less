@@ -1,0 +1,291 @@
+/* You can add global styles to this file, and also import other style files */
+body{
+     font-family: Arial, Helvetica, sans-serif;
+}
+h3.pageTitle{
+     margin: 20px;
+}
+
+button:active{
+     transform: scale(0.98);
+}
+.innerBox{
+     border: 1px solid #999;
+     border-radius: 8px 8px 0 0;
+     box-shadow: 1px 1px 3px #ccc;
+     padding: 10px;
+}
+.small{
+    font-size: 0.8em;
+}
+.center{
+     text-align: center;
+}
+.noRecords{
+    margin: 50px;
+    padding: 20px;
+    text-align: center;
+}
+.lagerFont{
+     font-size: 1.2em;
+}
+
+input[type="submit"], input[type="button"], button{
+    &:active{
+        transform: scale(0.98);
+    }
+    &:disabled{
+        opacity: 0.4;
+    }
+    box-sizing: border-box;
+}
+
+.error{
+    color: red;
+}
+
+.btn{
+    padding: 4px 10px;
+    font-weight: bold;
+    border-radius: 5px;
+    outline: none;
+    color: white;
+    &_green{
+        background-color: green;
+        border: 1px solid darkgreen;
+    }
+    &_orange{
+        background-color: #f7a002;
+        border: 1px solid #333;     
+    }
+    &_red{
+        background-color: #df4d08;
+        border: 1px solid #666;
+    }
+    &_black{
+        background-color: #333;
+        border: 1px solid #000;
+    }
+    &_skyBlue{
+        background-color:#4285f4;
+        border:1px solid #4285f4;
+    }
+    &_small{
+        padding: 2px 5px;
+        border-radius: 3px;
+        width: auto;
+    }
+    &_full{
+        width: 100%;
+    }
+}
+
+.disable{
+    opacity: 0.6;
+    background-color: #eee;
+    user-select: none;
+    pointer-events: none;
+}
+
+input, select{
+    height: 30px;
+}
+.fieldGroup{
+    margin-bottom:10px;
+}
+input, textarea, select{
+    width:100%;
+    padding:5px 10px;
+    -webkit-box-sizing:border-box;
+    box-sizing:border-box;
+    border-radius:5px;
+    border:1px solid #999;
+    outline: none;
+    &.ng-invalid.ng-touched{
+        border-color:red;
+        &~ .fieldError{
+            display:inline-block;
+        }
+    }
+    &[type=checkbox]{
+        width:15px;
+        height:15px;
+        margin-top:7px;
+    }
+    .checkbox{
+        vertical-align:top;
+        margin-top:5px;
+        display:inline-block;
+    }
+}
+textarea{
+    height: 60px;
+}
+select{
+    &.ng-invalid{
+         border-color:red;
+         &~ .fieldError{
+              display:inline-block;
+         }
+    }
+}
+.fieldError{
+    display:none;
+    color:red;
+    font-family:Arial,Helvetica,sans-serif;
+    font-size:.7em;
+}
+.pos_rel{
+    position: relative;
+}
+
+.arrow{
+    display: inline-block;
+    width: 0px;
+    height: 0px;
+    margin-left: 4px;
+    margin-bottom: 2px;
+    border-right: 5px solid transparent; 
+    border-left: 5px solid transparent; 
+    &Up{
+        border-bottom: 5px solid #000;
+    }
+    &Down{
+        border-top: 5px solid #000;
+    }
+}
+
+
+.sortItems{
+    position: absolute;
+    background-color: #fff;
+    right: 5px;
+    top: 135px;
+    z-index: 9;
+    ul{
+        padding: 0;
+        margin:0;
+        border: 2px solid #666;
+        overflow: hidden;
+        border-radius: 5px;
+    }
+    li{
+        list-style: none;
+        padding: 7px 20px;
+        cursor: pointer;
+        &:nth-child(2n-1){
+            background-color: #eee;
+        }
+    }
+    &:before{
+        content: "";
+        position: absolute;
+        top: -9px;
+        right: 7px;
+        border-bottom: 10px solid #777;
+        border-right: 10px solid transparent;
+        border-left: 10px solid transparent;
+    }
+}
+
+.actionBar{
+    background-color: #eee;
+    border-top: 1px solid #999;
+    border-bottom: 1px solid #999;
+    border-right: 5px solid #eee;
+    padding: 2px 5px 2px 10px;
+    display: flex;
+    position: relative;
+    font-size: 0.8em;
+    white-space: nowrap;
+    overflow: auto;
+    &_spacer{
+        flex: 1 1 auto;
+    }
+    &_search{
+        border: 1px solid #ccc;
+        display: inline-block;
+        border-radius: 5px;
+        outline: none;
+        padding: 2px 5px;
+        width: 100px;
+        margin-left: 5px;
+    }
+    .selectBox{
+        width: 80px;
+        display: inline-block;
+        vertical-align: top;
+        &_cont{
+            margin-left: 5px;
+        }
+        select{
+            background-color: #fff;
+        }
+    }
+    .whatsAppIcon{
+        display: inline-block;
+        padding: 1px 6px;
+        border: 1px solid #ccc;
+        margin-left: 7px;
+        border-radius: 5px;
+        background-color: #fff;
+        color: green;
+        font-size: 1.6em;
+        &:active{
+            transform: scale(0.97);
+        }
+    }
+    
+}
+.alert{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 300px;
+    box-shadow: 1px 1px 5px #000;
+    background-color: #fff;
+    border-radius: 10px 10px 0 0;
+    overflow: hidden;
+    &_overlay{
+         position: fixed;
+         top: 0;
+         bottom: 0;
+         right: 0;
+         left: 0;
+         background-color: #000;
+         opacity: 0.7;
+    }
+    &_head{
+         background-color: #222;
+         color: #fff;
+         padding: 10px;
+    }
+    &_text{
+         margin: 30px 10px;
+    }
+    &_actions{
+         padding: 10px 5px;
+         background-color: #efefef;
+         text-align: center;
+    }
+    &_btn{
+         color: #fff;
+         padding: 10px 25px;
+         border-radius: 5px;
+    }
+    &_ok{
+         background-color: darkblue;
+         border: #666;
+         margin-right: 15px;
+    }
+    &_no{
+         background-color: #666;
+         border: #333;
+    }
+}
+.link{
+    color: blue;
+    text-decoration: underline;
+    cursor: pointer;
+}
