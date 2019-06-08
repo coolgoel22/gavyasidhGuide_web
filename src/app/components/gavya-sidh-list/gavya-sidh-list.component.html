@@ -23,7 +23,8 @@
 </div>
 
 <ul class="table">
-    <li *ngFor="let record of allRecords | filter:'address.city':reqCity | filter: 'address.state': reqState | filter: searchText | orderBy: key"  class="row" [ngClass]="{'bm_selected':record.isChecked}">
+    <li *ngFor="let last= last; let i=index; let record of allRecords | filter:'address.city':reqCity | filter: 'address.state': reqState | filter: searchText | orderBy: key"  class="row" [ngClass]="{'bm_selected':record.isChecked}" >
+        <span *ngIf="last" class="recordCount">{{i+1}}</span>
         <div>
             <span class="row_checkbox" (click)="checkboxClicked(record)">
                 <i *ngIf="record.isChecked" class="fa fa-check" aria-hidden="true"></i>
@@ -49,7 +50,6 @@
         </div>
     </li>
 </ul>
-
 <div class="noRecords innerBox" *ngIf="allRecords && allRecords.length == 0">
     <b class="largerFont">No Gavysidh found for your searched text.</b>
 </div>

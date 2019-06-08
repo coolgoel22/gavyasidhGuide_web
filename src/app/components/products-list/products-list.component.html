@@ -26,7 +26,8 @@
     </div>  
 </div>
 <div class="products">
-    <div *ngFor="let item of allItems | filter:'category': reqCat | filter: 'name': reqProd | orderBy: key" class="products_item innerBox">
+    <div *ngFor="let i=index; let last=last; let item of allItems | filter:'category': reqCat | filter: 'name': reqProd | orderBy: key" class="products_item innerBox">
+        <span *ngIf="last" class="recordCount">{{i+1}}</span>
         <div class="products_item_name">
             <!-- <b>{{item.name}}</b> -  -->
             <b>{{productName[item.name]}}</b> - 
